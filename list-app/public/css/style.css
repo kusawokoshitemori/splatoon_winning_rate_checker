@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: "Nico Moji", "游ゴシック";
   background-image: url(/image/back_ground_img_00002.jpeg);
   background-size: cover; /* 画像を画面全体にフィットさせる */
   background-repeat: no-repeat; /* 画像を繰り返さない */
@@ -19,7 +20,6 @@ body {
 }
 /*勝率計算アプリのとこ*/
 .winning_rate {
-  font-family: "Nico Moji", "游ゴシック";
   font-weight: bold;
   font-size: 60px;
   color: rgb(194, 43, 43); /* 文字の色を白に設定 */
@@ -107,4 +107,66 @@ body {
 }
 .asari_container {
   background-color: #d8ff2b;
+}
+
+/*ここからガチエリアのページ*/
+.area_page_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.area_page_title {
+  height: 35vh;
+}
+.area_page_first_sentence {
+  display: flex;
+  align-items: center;
+}
+.area_page_button_container {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30vh;
+}
+.area_page_first_sentence {
+  font-size: 70px;
+  color: rgb(0, 139, 12);
+  font-weight: bold; /* 太字に設定 */
+  text-shadow: 2px 2px 4px rgb(103, 255, 56); /* 文字に影を追加 */
+}
+
+/*ボタンの設定*/
+.choice_big_button {
+  width: 30vh;
+  height: 18vh;
+  border: 2px solid #000; /* 枠線 */
+  padding: 20px; /* 内側の余白 */
+  border-radius: 8px; /* 角を丸める */
+  text-align: center; /* テキストを中央揃え */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 影を付ける */
+  transition: box-shadow 0.3s ease; /* 影の変化にアニメーションを付ける */
+
+  /*文字を中央に*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  text-decoration: none;
+  color: aliceblue;
+  text-shadow: 3px 3px 6px rgb(0, 0, 0);
+}
+.choice_big_button:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* ホバー時に影を強くする */
+}
+
+.choice_big_button_input {
+  background-color: #c4ff21;
+}
+.choice_big_button_bankara {
+  background-color: #ff4335;
+}
+.choice_big_button_Xmacchi {
+  background-color: #2abd5b;
 }
