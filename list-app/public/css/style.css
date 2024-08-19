@@ -1,0 +1,110 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url(/image/back_ground_img_00002.jpeg);
+  background-size: cover; /* 画像を画面全体にフィットさせる */
+  background-repeat: no-repeat; /* 画像を繰り返さない */
+  background-position: center center; /* 画像を中央に配置 */
+}
+
+/*ヨウ素を縦に揃える*/
+.top_page_test {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splatoon_logo {
+  height: 40vh;
+}
+/*勝率計算アプリのとこ*/
+.winning_rate {
+  font-family: "Nico Moji", "游ゴシック";
+  font-weight: bold;
+  font-size: 60px;
+  color: rgb(194, 43, 43); /* 文字の色を白に設定 */
+  -webkit-text-stroke: 1px rgb(248, 108, 229); /* 1pxの黒い外枠を設定 */
+  text-shadow: 3px 3px 6px rgba(204, 116, 245, 0.5);
+}
+
+/*ヨウ素を横に揃える&空間開ける*/
+.game_rule_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40vh;
+  width: 90%;
+}
+/*枠作る*/
+.area_container,
+.yagura_container,
+.hoko_container,
+.asari_container {
+  border: 2px solid #000; /* 枠線 */
+  padding: 20px; /* 内側の余白 */
+  border-radius: 8px; /* 角を丸める */
+  text-align: center; /* テキストを中央揃え */
+}
+
+.game_rule_container p {
+  font-family: "Nico Moji";
+}
+
+/* 文字を被せる */
+.mini_game_rule_container {
+  position: relative; /* 親要素を相対配置 */
+  height: auto;
+  width: auto;
+}
+
+.mini_game_rule_container img {
+  width: 100%;
+  height: auto;
+}
+
+.mini_game_rule_container p {
+  position: absolute; /* 絶対配置 */
+  top: 50%; /* コンテナの中央に配置 */
+  left: 50%;
+  transform: translate(-50%, 10%); /* 中央に正確に配置 */
+  color: rgb(250, 171, 233); /* 文字の色を白に設定 */
+  font-size: 40px; /* フォントサイズを設定 */
+  font-weight: bold; /* 太字に設定 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字に影を追加 */
+  pointer-events: none; /* 文字がクリック可能な要素を妨げないように */
+}
+
+/* すべてのコンテナに同じサイズを適用 */
+.area_container,
+.yagura_container,
+.hoko_container,
+.asari_container {
+  width: 240px; /* area_container の幅に合わせる */
+  height: 250px; /* area_container の高さに合わせる */
+  position: relative; /* 画像に文字を被せるための設定 */
+}
+
+/* 画像をコンテナに合わせて拡大/縮小 */
+.area_container img,
+.yagura_container img,
+.hoko_container img,
+.asari_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像を枠にフィットさせる */
+  display: block; /* 画像の余白を消すために block に設定 */
+}
+
+/*背景色*/
+.area_container {
+  background-color: #52e97f;
+}
+.yagura_container {
+  background-color: #64c0cc;
+}
+.hoko_container {
+  background-color: #4c5235;
+}
+.asari_container {
+  background-color: #d8ff2b;
+}
