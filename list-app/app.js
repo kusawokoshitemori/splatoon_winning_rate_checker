@@ -22,6 +22,22 @@ app.get("/", (req, res) => {
   res.render("top.ejs");
 });
 
+app.get("/area", (req, res) => {
+  res.render("area.ejs");
+});
+
+app.get("/yagura", (req, res) => {
+  res.render("yagura.ejs");
+});
+
+app.get("/hoko", (req, res) => {
+  res.render("hoko.ejs");
+});
+
+app.get("/asari", (req, res) => {
+  res.render("asari.ejs");
+});
+
 // サーバーの起動
 app.listen(port, () => {
   console.log(`サーバーが http://localhost:${port} で起動しました`);

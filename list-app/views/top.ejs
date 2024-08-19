@@ -21,7 +21,10 @@
       <div class="winning_rate">勝率計算アプリ</div>
 
       <div class="game_rule_container">
-        <div class="area_container mini_game_rule_container">
+        <div
+          class="area_container mini_game_rule_container"
+          id="area_container"
+        >
           <img
             src="/image/splatoon3_area_image.png"
             alt="エリアの画像"
@@ -29,31 +32,74 @@
           />
           <p>エリア</p>
         </div>
-        <div class="yagura_container mini_game_rule_container">
+        <div
+          class="yagura_container mini_game_rule_container"
+          id="yagura_container"
+        >
           <img
             src="/image/splatoon3_yagura_image.png"
             alt="ヤグラの画像"
             class="rule_image"
+            href="/yagura"
           />
           <p>ヤグラ</p>
         </div>
-        <div class="hoko_container mini_game_rule_container">
+        <div
+          class="hoko_container mini_game_rule_container"
+          id="hoko_container"
+        >
           <img
             src="/image/splatoon3_hoko_image.png"
             alt="ホコの画像"
             class="rule_image"
+            href="/hoko"
           />
           <p>ホコ</p>
         </div>
-        <div class="asari_container mini_game_rule_container">
+        <div
+          class="asari_container mini_game_rule_container"
+          id="asari_container"
+        >
           <img
             src="/image/splatoon3_asari_image.png"
             alt="アサリの画像"
             class="rule_image"
+            href="/asari"
           />
           <p>アサリ</p>
         </div>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const areaContainer = document.getElementById("area_container");
+
+        areaContainer.addEventListener("click", () => {
+          window.location.href = "/area"; // クリック時にページ遷移
+        });
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const areaContainer = document.getElementById("yagura_container");
+
+        areaContainer.addEventListener("click", () => {
+          window.location.href = "/yagura"; // クリック時にページ遷移
+        });
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const areaContainer = document.getElementById("hoko_container");
+
+        areaContainer.addEventListener("click", () => {
+          window.location.href = "/hoko"; // クリック時にページ遷移
+        });
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const areaContainer = document.getElementById("asari_container");
+
+        areaContainer.addEventListener("click", () => {
+          window.location.href = "/asari"; // クリック時にページ遷移
+        });
+      });
+    </script>
   </body>
 </html>
