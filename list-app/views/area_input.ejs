@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AREA</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/earlyaccess/nicomoji.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="area_input_page_container">
+      <div class="area_page_first_sentence">
+        <p>ガチエリア</p>
+        <img src="/image/splatoon3_area_image.png" alt="エリアの画像" />
+      </div>
+      <!--https://www.youtube.com/watch?v=NfW_5Y1RZQ4参照-->
+      <div class="checkbox_container">
+        <div class="checkbox_choice_item">
+          <input
+            type="checkbox"
+            id="checkbox_bankara"
+            class="checkbox_bankara"
+          />
+          <label for="checkbox_bankara">バンカラマッチ</label>
+        </div>
+        <div class="checkbox_choice_item">
+          <input
+            type="checkbox"
+            id="checkbox_Xmacchi"
+            class="checkbox_Xmacchi"
+          />
+          <label for="checkbox_Xmacchi">Xマッチ</label>
+        </div>
+      </div>
+
+      <div class="win_lose_container">
+        <div class="win_lose_number_form">
+          <input
+            type="number"
+            id="win_number_of_times"
+            name="win_number_of_times"
+            min="0"
+          />
+        </div>
+        <div>勝</div>
+        <div class="win_lose_number_form">
+          <input
+            type="number"
+            id="loss_number_of_times"
+            name="loss_number_of_times"
+            min="0"
+          />
+        </div>
+        <div>敗</div>
+        <button type="submit">送信</button>
+      </div>
+      <p class="last_input_time">最終入力時刻:？？？？？</p>
+    </div>
+  </body>
+</html>

@@ -25,17 +25,27 @@ app.get("/", (req, res) => {
 app.get("/area", (req, res) => {
   res.render("area.ejs");
 });
-
 app.get("/yagura", (req, res) => {
   res.render("yagura.ejs");
 });
-
 app.get("/hoko", (req, res) => {
   res.render("hoko.ejs");
 });
-
 app.get("/asari", (req, res) => {
   res.render("asari.ejs");
+});
+
+app.get("/area_input", (req, res) => {
+  res.render("area_input.ejs");
+});
+app.get("/yagura_input", (req, res) => {
+  res.render("yagura_input.ejs");
+});
+app.get("/hoko_input", (req, res) => {
+  res.render("hoko_input.ejs");
+});
+app.get("/asari_input", (req, res) => {
+  res.render("asari_input.ejs");
 });
 
 // サーバーの起動
