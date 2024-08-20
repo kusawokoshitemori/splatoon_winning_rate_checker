@@ -13,11 +13,12 @@
   <body>
     <div class="area_input_page_container">
       <div class="area_page_first_sentence">
+        <img src="/image/splatoon3_title_logo.png" alt="タイトルの画像" />
         <p>ガチエリア</p>
         <img src="/image/splatoon3_area_image.png" alt="エリアの画像" />
       </div>
       <!--https://www.youtube.com/watch?v=NfW_5Y1RZQ4参照-->
-      <div class="checkbox_container">
+      <div class="checkbox_container checkbox_container_bankara">
         <div class="checkbox_choice_item">
           <input
             type="checkbox"
@@ -45,7 +46,7 @@
             min="0"
           />
         </div>
-        <div>勝</div>
+        <div class="win_lose_number_test">勝</div>
         <div class="win_lose_number_form">
           <input
             type="number"
@@ -54,10 +55,12 @@
             min="0"
           />
         </div>
-        <div>敗</div>
-        <button type="submit">送信</button>
+        <div class="win_lose_number_test">敗</div>
+        <div class="information_submit_button">送信</div>
       </div>
-      <p class="last_input_time">最終入力時刻:？？？？？</p>
+      <div class="last_input_time_container">
+        <div class="last_input_time">最終入力時刻:？？？？？</div>
+      </div>
     </div>
   </body>
 </html>

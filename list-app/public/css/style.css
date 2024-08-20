@@ -187,3 +187,71 @@ body {
   flex-direction: row;
   align-items: center;
 }
+
+.checkbox_choice_item label {
+  font-size: 50px;
+}
+.checkbox_choice_item {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox_choice_item input[type="checkbox"] {
+  transform: scale(2); /* チェックボックスのサイズを1.5倍にスケーリング */
+  margin-right: 20px;
+}
+
+.win_lose_number_form input[type="number"] {
+  height: 70px;
+  width: 100px; /* 幅を300pxに設定 */
+  font-size: 50px;
+}
+.information_submit_button {
+  width: 50px;
+  height: 30px;
+  border: 2px solid #000; /* 枠線 */
+  padding: 20px; /* 内側の余白 */
+  border-radius: 8px; /* 角を丸める */
+  text-align: center; /* テキストを中央揃え */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 影を付ける */
+  background-color: #57c75a;
+  transition: box-shadow 0.3s ease; /* 影の変化にアニメーションを付ける */
+
+  margin-left: 20px;
+  font-size: 25px;
+  font-weight: 500;
+}
+.information_submit_button:hover {
+  background-color: #4ca049;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.win_lose_number_test {
+  font-size: 50px;
+}
+
+.last_input_time_container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 40px;
+  margin-right: 40px;
+  box-sizing: border-box;
+}
+.last_input_time {
+  font-size: 50px;
+}
+
+/*微調整*/
+.area_page_first_sentence {
+  margin-bottom: 75px;
+}
+.checkbox_container_bankara label {
+  margin-right: 25px;
+}
+.checkbox_container {
+  margin-bottom: 50px;
+}
+.win_lose_number_form {
+  margin: 0 5px;
+}
