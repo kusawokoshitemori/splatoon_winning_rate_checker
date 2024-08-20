@@ -66,11 +66,14 @@
     </div>
 
     <script>
+      /*チェックボックスのデータ*/
+      const bankaraCheckbox = document.getElementById("checkbox_bankara");
+      const xmacchiCheckbox = document.getElementById("checkbox_Xmacchi");
+      /*勝ち、負けのデータ*/
+      const winNumberInput = document.getElementById("win_number_of_times");
+      const lossNumberInput = document.getElementById("loss_number_of_times");
       // チェックボックスの状態を表示する関数(デバッグ用)
       function logCheckboxState() {
-        const bankaraCheckbox = document.getElementById("checkbox_bankara");
-        const xmacchiCheckbox = document.getElementById("checkbox_Xmacchi");
-
         // チェックボックスの状態をコンソールに表示
         console.log("バンカラマッチ:", bankaraCheckbox.checked);
         console.log("Xマッチ:", xmacchiCheckbox.checked);
@@ -78,16 +81,10 @@
 
       document
         .getElementById("information_submit_button")
-        .addEventListener("click", logCheckboxState);
-      document
-        .getElementById("information_submit_button")
-        .addEventListener("click", logWinLoseNumber);
+        .addEventListener("click", SendSubmitInformation);
 
       // チェックボックスに一つだけチェックできるようにしておく
       function OneSideCheckBoxState(event) {
-        const bankaraCheckbox = document.getElementById("checkbox_bankara");
-        const xmacchiCheckbox = document.getElementById("checkbox_Xmacchi");
-
         if (bankaraCheckbox.checked && xmacchiCheckbox.checked) {
           if (event.target.id === "checkbox_bankara") {
             xmacchiCheckbox.checked = false;
@@ -108,12 +105,32 @@
 
       function logWinLoseNumber() {
         // win_number_of_times と loss_number_of_times の input 要素を取得
-        const winInput = document.getElementById("win_number_of_times");
-        const lossInput = document.getElementById("loss_number_of_times");
 
         // 各 input 要素の値をコンソールに表示
-        console.log(`勝: ${winInput.value}`);
-        console.log(`敗: ${lossInput.value}`);
+        console.log(`勝: ${winNumberInput.value}`);
+        console.log(`敗: ${lossNumberInput.value}`);
+      }
+
+      //送信を押した後の操作
+      function SendSubmitInformation() {
+        if (!bankaraCheckbox.checked && !xmacchiCheckbox.checked) {
+          alert("バンカラマッチ,Xマッチのどちらかにチェックを入れてください");
+        } else if (
+          !isNonNegativeInteger(winNumberInput) ||
+          !isNonNegativeInteger(lossNumberInput)
+        ) {
+          alert("0を含む自然数を入力してください");
+        } else {
+          alert("バンカラマッチ,Xマッチのどちらかにチェックを入れてください");
+          logCheckboxState();
+          logWinLoseNumber();
+        }
+      }
+
+      // 自然数（0を含む）かどうかを確認する関数
+      function isNonNegativeInteger(value) {
+        const number = Number(value);
+        return Number.isInteger(number) && number >= 0;
       }
     </script>
   </body>
