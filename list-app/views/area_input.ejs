@@ -56,11 +56,65 @@
           />
         </div>
         <div class="win_lose_number_test">敗</div>
-        <div class="information_submit_button">送信</div>
+        <div class="information_submit_button" id="information_submit_button">
+          送信
+        </div>
       </div>
       <div class="last_input_time_container">
         <div class="last_input_time">最終入力時刻:？？？？？</div>
       </div>
     </div>
+
+    <script>
+      // チェックボックスの状態を表示する関数(デバッグ用)
+      function logCheckboxState() {
+        const bankaraCheckbox = document.getElementById("checkbox_bankara");
+        const xmacchiCheckbox = document.getElementById("checkbox_Xmacchi");
+
+        // チェックボックスの状態をコンソールに表示
+        console.log("バンカラマッチ:", bankaraCheckbox.checked);
+        console.log("Xマッチ:", xmacchiCheckbox.checked);
+      }
+
+      document
+        .getElementById("information_submit_button")
+        .addEventListener("click", logCheckboxState);
+      document
+        .getElementById("information_submit_button")
+        .addEventListener("click", logWinLoseNumber);
+
+      // チェックボックスに一つだけチェックできるようにしておく
+      function OneSideCheckBoxState(event) {
+        const bankaraCheckbox = document.getElementById("checkbox_bankara");
+        const xmacchiCheckbox = document.getElementById("checkbox_Xmacchi");
+
+        if (bankaraCheckbox.checked && xmacchiCheckbox.checked) {
+          if (event.target.id === "checkbox_bankara") {
+            xmacchiCheckbox.checked = false;
+          } else {
+            bankaraCheckbox.checked = false;
+          }
+        }
+      }
+
+      // 片方だけチェックの呼び出し
+      document
+        .getElementById("checkbox_bankara")
+        .addEventListener("change", OneSideCheckBoxState);
+
+      document
+        .getElementById("checkbox_Xmacchi")
+        .addEventListener("change", OneSideCheckBoxState);
+
+      function logWinLoseNumber() {
+        // win_number_of_times と loss_number_of_times の input 要素を取得
+        const winInput = document.getElementById("win_number_of_times");
+        const lossInput = document.getElementById("loss_number_of_times");
+
+        // 各 input 要素の値をコンソールに表示
+        console.log(`勝: ${winInput.value}`);
+        console.log(`敗: ${lossInput.value}`);
+      }
+    </script>
   </body>
 </html>
