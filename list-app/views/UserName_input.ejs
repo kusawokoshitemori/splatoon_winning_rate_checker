@@ -1,4 +1,3 @@
-<!--ここにプレイヤーネーム入れる-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,15 +20,18 @@
 
       <div class="input_splatoon_userName_test">ユーザーネームをいれてね</div>
       <div class="input_splatoon_userName_container">
-        <input
-          type="text"
-          id="input_splatoon_userName"
-          class="input_splatoon_userName"
-          placeholder="例: くさをこしてもり#1028"
-        />
-        <div class="information_submit_button" id="information_submit_button">
-          決定
-        </div>
+        <form id="userNameForm" method="post" action="/set_user_name">
+          <input
+            type="text"
+            id="input_splatoon_userName"
+            name="userName"
+            class="input_splatoon_userName"
+            placeholder="例: くさをこしてもり#1028"
+          />
+          <div class="information_submit_button" id="information_submit_button">
+            決定
+          </div>
+        </form>
       </div>
     </div>
   </body>
@@ -47,7 +49,8 @@
             "ユーザーネームの形式が正しくありません。任意の文字列の後に#と4桁の半角数字を入力してください。"
           );
         } else {
-          alert("その名前いいねぇ");
+          // フォームを送信
+          document.getElementById("userNameForm").submit();
         }
       });
   </script>
