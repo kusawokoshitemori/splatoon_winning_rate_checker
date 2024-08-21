@@ -1,0 +1,54 @@
+<!--ここにプレイヤーネーム入れる-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>USERNAME</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/earlyaccess/nicomoji.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="input_userName_container">
+      <img
+        src="/image/splatoon3_title_logo.png"
+        alt="スプラのロゴ"
+        class="input_userName_container_in_title_logo"
+      />
+
+      <div class="input_splatoon_userName_test">ユーザーネームをいれてね</div>
+      <div class="input_splatoon_userName_container">
+        <input
+          type="text"
+          id="input_splatoon_userName"
+          class="input_splatoon_userName"
+          placeholder="例: くさをこしてもり#1028"
+        />
+        <div class="information_submit_button" id="information_submit_button">
+          決定
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    document
+      .getElementById("information_submit_button")
+      .addEventListener("click", () => {
+        const inputElement = document.getElementById("input_splatoon_userName");
+        // 正規表現: 任意の文字列があり、その後に#と4桁の数字が続く
+        const regexUserName = /.+#\d{4}$/;
+
+        // 正規表現でチェック
+        if (!regexUserName.test(inputElement.value)) {
+          alert(
+            "ユーザーネームの形式が正しくありません。任意の文字列の後に#と4桁の半角数字を入力してください。"
+          );
+        } else {
+          alert("その名前いいねぇ");
+        }
+      });
+  </script>
+</html>

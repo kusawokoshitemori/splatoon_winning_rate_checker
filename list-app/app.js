@@ -48,6 +48,11 @@ app.get("/asari_input", (req, res) => {
   res.render("asari_input.ejs");
 });
 
+//一回エリアのバンカラから名前入力画面に移動できるようにする
+app.get("/area_bankara", (req, res) => {
+  res.render("area_memo.ejs");
+});
+
 // サーバーの起動
 app.listen(port, () => {
   console.log(`サーバーが http://localhost:${port} で起動しました`);
