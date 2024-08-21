@@ -116,12 +116,11 @@
         if (!bankaraCheckbox.checked && !xmacchiCheckbox.checked) {
           alert("バンカラマッチ,Xマッチのどちらかにチェックを入れてください");
         } else if (
-          !isNonNegativeInteger(winNumberInput) ||
-          !isNonNegativeInteger(lossNumberInput)
+          !isNonNegativeInteger(winNumberInput.value) ||
+          !isNonNegativeInteger(lossNumberInput.value)
         ) {
           alert("0を含む自然数を入力してください");
         } else {
-          alert("バンカラマッチ,Xマッチのどちらかにチェックを入れてください");
           logCheckboxState();
           logWinLoseNumber();
         }
