@@ -32,25 +32,48 @@
         </div>
       </div>
     </div>
-  </body>
-  <script>
-    document
-      .getElementById("information_submit_button")
-      .addEventListener("click", () => {
-        const inputElement = document.getElementById("input_splatoon_userName");
-        // 正規表現: 任意の文字列があり、その後に#と4桁の数字が続く
-        const regexUserName = /.+#\d{4}$/;
 
-        // 正規表現でチェック
-        if (!regexUserName.test(inputElement.value)) {
-          alert(
-            "ユーザーネームの形式が正しくありません。任意の文字列の後に#と4桁の半角数字を入力してください。"
+    <script>
+      document
+        .getElementById("information_submit_button")
+        .addEventListener("click", async () => {
+          const splatoonUserName = document.getElementById(
+            "input_splatoon_userName"
           );
-        } else {
-          // ユーザー名をセッションストレージに保存
-          sessionStorage.setItem("UserName", inputElement.value);
-          alert("その名前いいねぇ");
-        }
-      });
-  </script>
+          //const redirectTo = document.getElementById("redirectTo").value; redirectToを消したら動く
+          // 正規表現: 任意の文字列があり、その後に#と4桁の数字が続く
+          const regexUserName = /.+#\d{4}$/;
+
+          // 正規表現でチェック
+          if (!regexUserName.test(splatoonUserName.value)) {
+            alert(
+              "ユーザーネームの形式が正しくありません。任意の文字列の後に#と4桁の半角数字を入力してください。"
+            );
+          } else {
+            // ユーザー名をセッションストレージに保存
+            sessionStorage.setItem("UserName", splatoonUserName.value);
+            alert("その名前いいねぇ");
+            /* ChatGPT */
+            try {
+              const response = await fetch("/save-username", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userName: splatoonUserName.value }),
+              });
+
+              if (response.ok) {
+                console.log("ユーザーネームがサーバーに保存されました");
+              } else {
+                console.error("ユーザーネームの保存に失敗しました");
+              }
+            } catch (error) {
+              console.error("リクエストエラー:", error);
+            }
+            /* ここまで */
+          }
+        });
+    </script>
+  </body>
 </html>

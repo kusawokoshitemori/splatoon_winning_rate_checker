@@ -1,5 +1,6 @@
 // 必要なモジュールを読み込む
 const express = require("express");
+const session = require("express-session");
 const path = require("path");
 
 // Expressアプリケーションを作成
@@ -10,12 +11,42 @@ const port = process.env.PORT || 3000;
 
 // EJSのビューエンジンを設定
 app.set("view engine", "ejs");
-
-// ビューのフォルダを指定
 app.set("views", path.join(__dirname, "views"));
-
-// 静的ファイルを提供するミドルウェア
 app.use(express.static(path.join(__dirname, "public")));
+
+// ミドルウェア設定
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: "your-secret-key",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+// POSTリクエストを受け取り、ユーザーネームをセッションに保存
+app.post("/save-username", (req, res) => {
+  const userName = req.body.userName;
+  if (userName) {
+    req.session.userName = userName;
+    res.status(200).send("ユーザーネームが保存されました");
+  } else {
+    res.status(400).send("ユーザーネームが提供されていません");
+  }
+});
+
+// リダイレクト用ミドルウェア
+function checkUserName(req, res, next) {
+  if (!req.session.userName) {
+    // 現在のURLをセッションに保存
+    req.session.redirectTo = req.originalUrl;
+    // ログインページにリダイレクト
+    res.redirect("/UserName_input");
+  } else {
+    next();
+  }
+}
 
 // ルートの設定
 app.get("/", (req, res) => {
@@ -35,20 +66,45 @@ app.get("/asari", (req, res) => {
   res.render("asari.ejs");
 });
 
-app.get("/area_input", (req, res) => {
-  res.render("area_input.ejs");
-});
-app.get("/yagura_input", (req, res) => {
-  res.render("yagura_input.ejs");
-});
-app.get("/hoko_input", (req, res) => {
-  res.render("hoko_input.ejs");
-});
-app.get("/asari_input", (req, res) => {
-  res.render("asari_input.ejs");
+// ユーザー名入力画面
+app.get("/UserName_input", (req, res) => {
+  res.render("UserName_input.ejs");
 });
 
-//一回エリアのバンカラから名前入力画面に移動できるようにする
+app.get("/area_input", checkUserName, (req, res) => {
+  res.render("area_input.ejs", {
+    userName: req.session.userName,
+    redirectTo: "/area_input",
+  });
+});
+app.get("/yagura_input", checkUserName, (req, res) => {
+  res.render("yagura_input.ejs", {
+    userName: req.session.userName,
+    redirectTo: "/yagura_input",
+  });
+});
+app.get("/hoko_input", checkUserName, (req, res) => {
+  res.render("hoko_input.ejs", {
+    userName: req.session.userName,
+    redirectTo: "/hoko_input",
+  });
+});
+app.get("/asari_input", checkUserName, (req, res) => {
+  res.render("asari_input.ejs", {
+    userName: req.session.userName,
+    redirectTo: "/asari_input",
+  });
+});
+
+// ログイン後のリダイレクト処理
+app.post("/login", (req, res) => {
+  req.session.userName = req.body.userName;
+  const redirectTo = req.session.redirectTo || "/";
+  req.session.redirectTo = null;
+  res.redirect(redirectTo);
+});
+
+// エリアのバンカラから名前入力画面に移動できるようにする
 app.get("/area_bankara", (req, res) => {
   res.render("UserName_input.ejs");
 });
