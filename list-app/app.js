@@ -4,9 +4,27 @@
 const express = require("express");
 const session = require("express-session");
 const path = require("path");
+const mysql = require("mysql2");
 
 // Expressアプリケーションを作成
 const app = express();
+
+// データベース接続情報 (MySQL2)
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "kusamori",
+  password: "kusaw0k0sh!tem0r!", // ローカル環境のMySQLパスワード
+  database: "splatoon_winning_rate_db",
+});
+
+// 接続を開く
+connection.connect((err) => {
+  if (err) {
+    console.error("データベースへの接続に失敗しました:", err);
+    return;
+  }
+  console.log("データベースに接続しました");
+});
 
 // ポート番号の設定（環境変数から取得することが推奨されますが、デフォルトで3000を使用）
 const port = process.env.PORT || 3000;
