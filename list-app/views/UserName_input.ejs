@@ -40,7 +40,6 @@
           const splatoonUserName = document.getElementById(
             "input_splatoon_userName"
           );
-          //const redirectTo = document.getElementById("redirectTo").value; redirectToを消したら動く
           // 正規表現: 任意の文字列があり、その後に#と4桁の数字が続く
           const regexUserName = /.+#\d{4}$/;
 
@@ -53,7 +52,7 @@
             // ユーザー名をセッションストレージに保存
             sessionStorage.setItem("UserName", splatoonUserName.value);
             alert("その名前いいねぇ");
-            /* ChatGPT */
+
             try {
               const response = await fetch("/save-username", {
                 method: "POST",
@@ -64,14 +63,16 @@
               });
 
               if (response.ok) {
-                console.log("ユーザーネームがサーバーに保存されました");
+                const data = await response.json();
+                const redirectTo = data.redirectTo || "/";
+                // リダイレクト
+                window.location.href = redirectTo;
               } else {
                 console.error("ユーザーネームの保存に失敗しました");
               }
             } catch (error) {
               console.error("リクエストエラー:", error);
             }
-            /* ここまで */
           }
         });
     </script>

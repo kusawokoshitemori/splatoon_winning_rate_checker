@@ -1,3 +1,5 @@
+//ごり押しだけど、app.jsを更新させたらUserName消える
+
 // 必要なモジュールを読み込む
 const express = require("express");
 const session = require("express-session");
@@ -25,12 +27,16 @@ app.use(
   })
 );
 
-// POSTリクエストを受け取り、ユーザーネームをセッションに保存
 app.post("/save-username", (req, res) => {
   const userName = req.body.userName;
   if (userName) {
     req.session.userName = userName;
-    res.status(200).send("ユーザーネームが保存されました");
+
+    // セッションに保存されていたリダイレクト先を取得
+    const redirectTo = req.session.redirectTo || "/";
+
+    // リダイレクト先をJSONとして返す
+    res.status(200).json({ redirectTo });
   } else {
     res.status(400).send("ユーザーネームが提供されていません");
   }
