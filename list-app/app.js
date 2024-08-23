@@ -120,6 +120,40 @@ app.get("/asari_input", checkUserName, (req, res) => {
   });
 });
 
+//データベースにデータを入れる
+app.post("/save-game-record", (req, res) => {
+  const {
+    userName_input,
+    rule_input,
+    winNumber_input,
+    lossNumber_input,
+    datetime_input,
+  } = req.body;
+
+  // SQLクエリの準備
+  const query =
+    "INSERT INTO game_records (user_id, rule, win_number, loss_number, datetime) VALUES (?, ?, ?, ?, ?)";
+
+  // データベースへの挿入
+  connection.query(
+    query,
+    [
+      userName_input,
+      rule_input,
+      winNumber_input,
+      lossNumber_input,
+      datetime_input,
+    ],
+    (err, results) => {
+      if (err) {
+        console.error("データの挿入に失敗しました:", err);
+        return res.status(500).send("データの挿入に失敗しました");
+      }
+      res.status(200).send("データが正常に挿入されました");
+    }
+  );
+});
+
 // ログイン後のリダイレクト処理
 app.post("/login", (req, res) => {
   req.session.userName = req.body.userName;
