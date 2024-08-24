@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AREA_X</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/earlyaccess/nicomoji.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="result_win_lose_rate">
+      <div class="yagura_page_first_sentence">
+        <img src="/image/splatoon3_title_logo.png" alt="タイトルの画像" />
+        <p>ガチヤグラ</p>
+        <img src="/image/splatoon3_yagura_image.png" alt="ヤグラの画像" />
+      </div>
+      <div class="result_win_lose_rate_sentence">
+        <p class="result_win_lose_rate_sentence_p1">
+          <%= totalWins %>勝<%= totalLosses %>敗
+        </p>
+        <p class="result_win_lose_rate_sentence_p2">勝率<%= winRate %>%</p>
+        <p class="result_win_lose_rate_sentence_p3"><%= comment %></p>
+        <p class="result_win_lose_rate_sentence_p4">Player : <%= userId %></p>
+      </div>
+    </div>
+  </body>
+</html>

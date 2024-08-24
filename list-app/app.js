@@ -234,14 +234,295 @@ app.get("/area_bankara", checkUserName, (req, res) => {
   });
 });
 
-app.get("/yagura_bankara", (req, res) => {
-  res.render("yagura_bankara.ejs");
+app.get("/yagura_bankara", checkUserName, (req, res) => {
+  const userId = req.session.userName;
+  const rule = "yagura_bankara";
+
+  const randomComment = comments[Math.floor(Math.random() * comments.length)];
+
+  const sql = `
+    SELECT win_number, loss_number 
+    FROM game_records 
+    WHERE user_id = ? AND rule = ?`;
+
+  connection.query(sql, [userId, rule], (err, results) => {
+    if (err) {
+      console.error("データ取得に失敗しました: " + err.stack);
+      res.status(500).send("サーバーエラー");
+      return;
+    }
+
+    let totalWins = 0;
+    let totalLosses = 0;
+
+    results.forEach((row) => {
+      totalWins += row.win_number;
+      totalLosses += row.loss_number;
+    });
+
+    const winRate =
+      totalWins + totalLosses > 0
+        ? (totalWins / (totalWins + totalLosses)) * 100
+        : 0;
+
+    res.render("yagura_bankara", {
+      userId: userId,
+      rule: rule,
+      totalWins: totalWins,
+      totalLosses: totalLosses,
+      winRate: winRate.toFixed(2),
+      comment: randomComment,
+    });
+  });
 });
-app.get("/hoko_bankara", (req, res) => {
-  res.render("hoko_bankara.ejs");
+
+app.get("/hoko_bankara", checkUserName, (req, res) => {
+  const userId = req.session.userName;
+  const rule = "hoko_bankara";
+
+  const randomComment = comments[Math.floor(Math.random() * comments.length)];
+
+  const sql = `
+    SELECT win_number, loss_number 
+    FROM game_records 
+    WHERE user_id = ? AND rule = ?`;
+
+  connection.query(sql, [userId, rule], (err, results) => {
+    if (err) {
+      console.error("データ取得に失敗しました: " + err.stack);
+      res.status(500).send("サーバーエラー");
+      return;
+    }
+
+    let totalWins = 0;
+    let totalLosses = 0;
+
+    results.forEach((row) => {
+      totalWins += row.win_number;
+      totalLosses += row.loss_number;
+    });
+
+    const winRate =
+      totalWins + totalLosses > 0
+        ? (totalWins / (totalWins + totalLosses)) * 100
+        : 0;
+
+    res.render("hoko_bankara", {
+      userId: userId,
+      rule: rule,
+      totalWins: totalWins,
+      totalLosses: totalLosses,
+      winRate: winRate.toFixed(2),
+      comment: randomComment,
+    });
+  });
 });
-app.get("/asari_bankara", (req, res) => {
-  res.render("asari_bankara.ejs");
+
+app.get("/asari_bankara", checkUserName, (req, res) => {
+  const userId = req.session.userName;
+  const rule = "asari_bankara";
+
+  const randomComment = comments[Math.floor(Math.random() * comments.length)];
+
+  const sql = `
+    SELECT win_number, loss_number 
+    FROM game_records 
+    WHERE user_id = ? AND rule = ?`;
+
+  connection.query(sql, [userId, rule], (err, results) => {
+    if (err) {
+      console.error("データ取得に失敗しました: " + err.stack);
+      res.status(500).send("サーバーエラー");
+      return;
+    }
+
+    let totalWins = 0;
+    let totalLosses = 0;
+
+    results.forEach((row) => {
+      totalWins += row.win_number;
+      totalLosses += row.loss_number;
+    });
+
+    const winRate =
+      totalWins + totalLosses > 0
+        ? (totalWins / (totalWins + totalLosses)) * 100
+        : 0;
+
+    res.render("asari_bankara", {
+      userId: userId,
+      rule: rule,
+      totalWins: totalWins,
+      totalLosses: totalLosses,
+      winRate: winRate.toFixed(2),
+      comment: randomComment,
+    });
+  });
+});
+
+app.get("/area_X", checkUserName, (req, res) => {
+  const userId = req.session.userName;
+  const rule = "area_X";
+
+  const randomComment = comments[Math.floor(Math.random() * comments.length)];
+
+  const sql = `
+    SELECT win_number, loss_number 
+    FROM game_records 
+    WHERE user_id = ? AND rule = ?`;
+
+  connection.query(sql, [userId, rule], (err, results) => {
+    if (err) {
+      console.error("データ取得に失敗しました: " + err.stack);
+      res.status(500).send("サーバーエラー");
+      return;
+    }
+
+    let totalWins = 0;
+    let totalLosses = 0;
+
+    results.forEach((row) => {
+      totalWins += row.win_number;
+      totalLosses += row.loss_number;
+    });
+
+    const winRate =
+      totalWins + totalLosses > 0
+        ? (totalWins / (totalWins + totalLosses)) * 100
+        : 0;
+
+    res.render("area_X", {
+      userId: userId,
+      rule: rule,
+      totalWins: totalWins,
+      totalLosses: totalLosses,
+      winRate: winRate.toFixed(2),
+      comment: randomComment,
+    });
+  });
+});
+app.get("/yagura_X", checkUserName, (req, res) => {
+  const userId = req.session.userName;
+  const rule = "yagura_X";
+
+  const randomComment = comments[Math.floor(Math.random() * comments.length)];
+
+  const sql = `
+    SELECT win_number, loss_number 
+    FROM game_records 
+    WHERE user_id = ? AND rule = ?`;
+
+  connection.query(sql, [userId, rule], (err, results) => {
+    if (err) {
+      console.error("データ取得に失敗しました: " + err.stack);
+      res.status(500).send("サーバーエラー");
+      return;
+    }
+
+    let totalWins = 0;
+    let totalLosses = 0;
+
+    results.forEach((row) => {
+      totalWins += row.win_number;
+      totalLosses += row.loss_number;
+    });
+
+    const winRate =
+      totalWins + totalLosses > 0
+        ? (totalWins / (totalWins + totalLosses)) * 100
+        : 0;
+
+    res.render("yagura_X", {
+      userId: userId,
+      rule: rule,
+      totalWins: totalWins,
+      totalLosses: totalLosses,
+      winRate: winRate.toFixed(2),
+      comment: randomComment,
+    });
+  });
+});
+app.get("/hoko_X", checkUserName, (req, res) => {
+  const userId = req.session.userName;
+  const rule = "hoko_X";
+
+  const randomComment = comments[Math.floor(Math.random() * comments.length)];
+
+  const sql = `
+    SELECT win_number, loss_number 
+    FROM game_records 
+    WHERE user_id = ? AND rule = ?`;
+
+  connection.query(sql, [userId, rule], (err, results) => {
+    if (err) {
+      console.error("データ取得に失敗しました: " + err.stack);
+      res.status(500).send("サーバーエラー");
+      return;
+    }
+
+    let totalWins = 0;
+    let totalLosses = 0;
+
+    results.forEach((row) => {
+      totalWins += row.win_number;
+      totalLosses += row.loss_number;
+    });
+
+    const winRate =
+      totalWins + totalLosses > 0
+        ? (totalWins / (totalWins + totalLosses)) * 100
+        : 0;
+
+    res.render("hoko_X", {
+      userId: userId,
+      rule: rule,
+      totalWins: totalWins,
+      totalLosses: totalLosses,
+      winRate: winRate.toFixed(2),
+      comment: randomComment,
+    });
+  });
+});
+app.get("/asari_X", checkUserName, (req, res) => {
+  const userId = req.session.userName;
+  const rule = "asari_X";
+
+  const randomComment = comments[Math.floor(Math.random() * comments.length)];
+
+  const sql = `
+    SELECT win_number, loss_number 
+    FROM game_records 
+    WHERE user_id = ? AND rule = ?`;
+
+  connection.query(sql, [userId, rule], (err, results) => {
+    if (err) {
+      console.error("データ取得に失敗しました: " + err.stack);
+      res.status(500).send("サーバーエラー");
+      return;
+    }
+
+    let totalWins = 0;
+    let totalLosses = 0;
+
+    results.forEach((row) => {
+      totalWins += row.win_number;
+      totalLosses += row.loss_number;
+    });
+
+    const winRate =
+      totalWins + totalLosses > 0
+        ? (totalWins / (totalWins + totalLosses)) * 100
+        : 0;
+
+    res.render("asari_X", {
+      userId: userId,
+      rule: rule,
+      totalWins: totalWins,
+      totalLosses: totalLosses,
+      winRate: winRate.toFixed(2),
+      comment: randomComment,
+    });
+  });
 });
 
 //データベースにデータを入れる
