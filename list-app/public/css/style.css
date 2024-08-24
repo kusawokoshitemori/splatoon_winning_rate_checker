@@ -320,6 +320,7 @@ body {
 .result_win_lose_rate_sentence {
   padding: 0;
   margin: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -336,10 +337,18 @@ body {
 }
 .result_win_lose_rate_sentence_p3 {
   padding: 0;
-  margin-top: 20px;
+  margin: 20px 0;
+  font-family: "Yu Gothic UI", serif;
   font-size: 40px;
 }
 .result_win_lose_rate_sentence_p4 {
+  padding: 0;
+  padding-top: 5px;
+  margin: 0;
+  width: 90%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-start;
+  font-size: 40px;
+  font-weight: bold;
+  opacity: 0.5;
 }
