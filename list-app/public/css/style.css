@@ -339,3 +339,7 @@ body {
   margin-top: 20px;
   font-size: 40px;
 }
+.result_win_lose_rate_sentence_p4 {
+  display: flex;
+  justify-content: end;
+}
