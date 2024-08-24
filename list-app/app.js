@@ -120,6 +120,19 @@ app.get("/asari_input", checkUserName, (req, res) => {
   });
 });
 
+app.get("/area_bankara", (req, res) => {
+  res.render("area_bankara.ejs");
+});
+app.get("/yagura_bankara", (req, res) => {
+  res.render("yagura_bankara.ejs");
+});
+app.get("/hoko_bankara", (req, res) => {
+  res.render("hoko_bankara.ejs");
+});
+app.get("/asari_bankara", (req, res) => {
+  res.render("asari_bankara.ejs");
+});
+
 //データベースにデータを入れる
 app.post("/save-game-record", (req, res) => {
   const {
@@ -160,11 +173,6 @@ app.post("/login", (req, res) => {
   const redirectTo = req.session.redirectTo || "/";
   req.session.redirectTo = null;
   res.redirect(redirectTo);
-});
-
-// エリアのバンカラから名前入力画面に移動できるようにする
-app.get("/area_bankara", (req, res) => {
-  res.render("UserName_input.ejs");
 });
 
 // サーバーの起動

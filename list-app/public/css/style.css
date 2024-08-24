@@ -6,6 +6,12 @@ body {
   background-size: cover; /* 画像を画面全体にフィットさせる */
   background-repeat: no-repeat; /* 画像を繰り返さない */
   background-position: center center; /* 画像を中央に配置 */
+
+  user-select: none;
+  /* ベンダープレフィックスを追加して互換性を高める */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 /*ヨウ素を縦に揃える*/
@@ -250,7 +256,10 @@ body {
 }
 
 /*微調整*/
-.stage_page_first_sentence {
+.area_page_first_sentence,
+.yagura_page_first_sentence,
+.hoko_page_first_sentence,
+.asari_page_first_sentence {
   margin-bottom: 75px;
 }
 .checkbox_container_bankara label {
@@ -300,4 +309,33 @@ body {
 .input_splatoon_userName_test {
   margin-top: 60px;
   margin-bottom: 90px;
+}
+
+/* ここから結果表示系 */
+.result_win_lose_rate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.result_win_lose_rate_sentence {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.result_win_lose_rate_sentence_p1 {
+  padding: 0;
+  margin: 0;
+  font-size: 100px;
+}
+.result_win_lose_rate_sentence_p2 {
+  padding: 0;
+  margin: 0;
+  font-size: 100px;
+}
+.result_win_lose_rate_sentence_p3 {
+  padding: 0;
+  margin-top: 20px;
+  font-size: 40px;
 }
