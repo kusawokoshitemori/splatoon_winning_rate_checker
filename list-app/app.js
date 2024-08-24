@@ -121,8 +121,58 @@ app.get("/asari_input", checkUserName, (req, res) => {
 });
 
 app.get("/area_bankara", (req, res) => {
-  res.render("area_bankara.ejs");
+  const userId = "frfr#2345";
+  const rule = "area_bankara";
+
+  console.log("Fetching data for user:", userId, "and rule:", rule);
+
+  const sql = `
+    SELECT win_number, loss_number 
+    FROM game_records 
+    WHERE user_id = ? AND rule = ?`;
+
+  connection.query(sql, [userId, rule], (err, results) => {
+    if (err) {
+      console.error("データ取得に失敗しました: " + err.stack);
+      res.status(500).send("サーバーエラー");
+      return;
+    }
+
+    console.log("Query results:", results);
+
+    let totalWins = 0;
+    let totalLosses = 0;
+
+    results.forEach((row) => {
+      totalWins += row.win_number;
+      totalLosses += row.loss_number;
+    });
+
+    const winRate =
+      totalWins + totalLosses > 0
+        ? (totalWins / (totalWins + totalLosses)) * 100
+        : 0;
+
+    console.log("Calculated winRate:", winRate);
+
+    console.log({
+      userId: userId,
+      rule: rule,
+      totalWins: totalWins,
+      totalLosses: totalLosses,
+      winRate: winRate.toFixed(2),
+    });
+
+    res.render("area_bankara", {
+      userId: userId,
+      rule: rule,
+      totalWins: totalWins,
+      totalLosses: totalLosses,
+      winRate: winRate.toFixed(2),
+    });
+  });
 });
+
 app.get("/yagura_bankara", (req, res) => {
   res.render("yagura_bankara.ejs");
 });
