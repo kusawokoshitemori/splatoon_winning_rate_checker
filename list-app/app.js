@@ -189,9 +189,11 @@ const comments = [
   "黒ザップ立ち回り難しすぎ",
   "モップリン段差好みがち",
   "ローラーはインクの端っこにいる",
+  "クラブラは距離を取る",
+  "作者はゴッドフィールド元63位",
 ];
-app.get("/area_bankara", (req, res) => {
-  const userId = "frfr#2345";
+app.get("/area_bankara", checkUserName, (req, res) => {
+  const userId = req.session.userName;
   const rule = "area_bankara";
 
   const randomComment = comments[Math.floor(Math.random() * comments.length)];
@@ -286,5 +288,5 @@ app.post("/login", (req, res) => {
 
 // サーバーの起動
 app.listen(port, () => {
-  console.log(`サーバーが http://localhost:${port} で起動しました`);
+  console.log(`サーバーが http://localhost:${port} で起動しましたよ`);
 });
