@@ -364,3 +364,12 @@ body {
   font-weight: bold;
   opacity: 0.5;
 }
+
+/* Escキーの相対位置を決めるとこ */
+.Esc_key_back_button {
+  position: absolute; /* 絶対位置を設定 */
+  top: 25px; /* 上から0px */
+  left: 25px; /* 左から0px */
+  width: 150px; /* 必要に応じてサイズ調整 */
+  height: auto; /* 縦横比を保つため */
+}
