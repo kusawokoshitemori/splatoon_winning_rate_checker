@@ -61,8 +61,10 @@
         </div>
       </div>
       <div class="last_input_time_container">
-        <h1>こんにちは、<%= userName %>さん！</h1>
-        <div class="last_input_time">最終入力時刻:？？？？？</div>
+        <div class="last_input_time">
+          最終入力時刻 :<%= mostRecentDatetime %>
+          <p class="userName_watermark">Player : <%= userName %></p>
+        </div>
       </div>
     </div>
     <a class="Esc_key_button_function" href="/area">
@@ -147,7 +149,6 @@
             .toISOString()
             .slice(0, 19)
             .replace("T", " "); // 現在の時間をYYYY-MM-DD HH:MM:SS形式で取得
-          alert("データベースに送信する予定");
 
           //データ入れるやつ
           fetch("/save-game-record", {
@@ -166,7 +167,7 @@
             .then((response) => response.text())
             .then((data) => {
               console.log(data);
-              alert("Record saved successfully");
+              alert("データを送信しました");
             })
             .catch((error) => {
               console.error("Error:", error);

@@ -96,11 +96,48 @@ app.get("/UserName_input", (req, res) => {
 });
 
 app.get("/area_input", checkUserName, (req, res) => {
-  res.render("area_input.ejs", {
-    userName: req.session.userName,
-    redirectTo: "/area_input",
+  const userId = req.session.userName;
+
+  // SQLクエリで最新の日付を取得
+  const sql = `
+    SELECT rule, datetime
+    FROM game_records
+    WHERE user_id = ?
+      AND rule IN ('area_bankara', 'area_x')
+    ORDER BY datetime DESC
+    LIMIT 1;
+  `;
+
+  connection.query(sql, [userId], (err, results) => {
+    if (err) {
+      console.error("データ取得に失敗しました: " + err.stack);
+      res.status(500).send("サーバーエラー");
+      return;
+    }
+
+    // 取得したデータから最新の datetime を設定
+    let mostRecentDatetime = null;
+    if (results.length > 0) {
+      mostRecentDatetime = results[0].datetime;
+
+      // 日付を "YYYY/MM/DD HH:MM" 形式にフォーマット
+      const year = mostRecentDatetime.getFullYear();
+      const month = String(mostRecentDatetime.getMonth() + 1).padStart(2, "0");
+      const day = String(mostRecentDatetime.getDate()).padStart(2, "0");
+      const hours = String(mostRecentDatetime.getHours()).padStart(2, "0");
+      const minutes = String(mostRecentDatetime.getMinutes()).padStart(2, "0");
+
+      mostRecentDatetime = `${year}/${month}/${day} ${hours}:${minutes}`;
+    }
+
+    res.render("area_input.ejs", {
+      userName: userId,
+      redirectTo: "/area_input",
+      mostRecentDatetime: mostRecentDatetime,
+    });
   });
 });
+
 app.get("/yagura_input", checkUserName, (req, res) => {
   res.render("yagura_input.ejs", {
     userName: req.session.userName,
