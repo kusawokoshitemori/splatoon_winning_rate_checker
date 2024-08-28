@@ -11,11 +11,11 @@ const app = express();
 
 // データベース接続情報 (MySQL2)
 const connection = mysql.createConnection({
-  host: "内緒",
-  user: "内緒",
-  password: "内緒", // ローカル環境のMySQLパスワード
-  database: "splatoon_winning_rate_db",
-  port: 3306, // MySQLのデフォルトポート
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 // 接続を開く
