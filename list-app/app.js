@@ -1,10 +1,11 @@
-//ごり押しだけど、app.jsを更新させたらUserName消える
-
 // 必要なモジュールを読み込む
 const express = require("express");
 const session = require("express-session");
 const path = require("path");
 const mysql = require("mysql2");
+
+// 環境変数の読み込み
+require("dotenv").config();
 
 // Expressアプリケーションを作成
 const app = express();
@@ -12,7 +13,6 @@ const app = express();
 // データベース接続情報 (MySQL2)
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
