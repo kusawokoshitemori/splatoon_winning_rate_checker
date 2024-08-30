@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: "your-secret-key",
+    secret: "aW9unV7RThX6Y5qVnM6LPQ3Hk2FZ9XpK7vQzGdQ4Wk7X8jG6V2TtR1sU4H7Q3M5N",
     resave: false,
     saveUninitialized: true,
   })
