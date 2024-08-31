@@ -145,10 +145,7 @@
           const rule_input = rule_input_sub;
           const winNumber_input = winNumberInput.value;
           const lossNumber_input = lossNumberInput.value;
-          const datetime_input = new Date()
-            .toISOString()
-            .slice(0, 19)
-            .replace("T", " "); // 現在の時間をYYYY-MM-DD HH:MM:SS形式で取得
+          const datetime_input = getJSTDateTime();
 
           //データ入れるやつ
           fetch("/save-game-record", {
@@ -179,6 +176,24 @@
       function isNonNegativeInteger(value) {
         const number = Number(value);
         return Number.isInteger(number) && number >= 0;
+      }
+      function getJSTDateTime() {
+        // 現在の時間を取得
+        const now = new Date();
+
+        // UTCからJSTに変換するために9時間（= 9 * 60分）を加算
+        const jstOffset = 0; // 9時間のミリ秒数
+        const jstTime = new Date(now.getTime() + jstOffset);
+
+        // JST時間をYYYY-MM-DD HH:MM:SS形式で取得
+        const year = jstTime.getFullYear();
+        const month = String(jstTime.getMonth() + 1).padStart(2, "0");
+        const day = String(jstTime.getDate()).padStart(2, "0");
+        const hours = String(jstTime.getHours()).padStart(2, "0");
+        const minutes = String(jstTime.getMinutes()).padStart(2, "0");
+        const seconds = String(jstTime.getSeconds()).padStart(2, "0");
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
       }
     </script>
   </body>
